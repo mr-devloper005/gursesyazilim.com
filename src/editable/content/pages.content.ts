@@ -3,19 +3,19 @@ import { slot4BrandConfig } from '@/editable/theme/brand.config'
 export const pagesContent = {
   home: {
     metadata: {
-      title: 'Stories, visuals, and discoverable content',
-      description: 'Explore articles, images, listings, and curated posts through a cleaner reading-first experience.',
-      openGraphTitle: 'Stories, visuals, and discoverable content',
-      openGraphDescription: 'Discover articles, visual posts, and connected content through a calmer reading-first experience.',
-      keywords: ['story platform', 'article site', 'visual content', 'content discovery'],
+      title: 'Classified products, services, rentals, and opportunities',
+      description: 'Discover classified products, services, rentals, roles, and timely offers on gursesyazilim.',
+      openGraphTitle: 'Find useful classified opportunities',
+      openGraphDescription: 'Browse clear classified offers for products, services, roles, rentals, and more.',
+      keywords: ['classified listings', 'services', 'jobs', 'rentals', 'products for sale'],
     },
     hero: {
-      badge: 'Latest stories and visuals',
-      title: ['A thoughtful home for', 'stories, visuals, and discovery.'],
-      description: 'Explore fresh articles, image-led posts, and discoverable content across the platform through a calmer and clearer browsing experience.',
-      primaryCta: { label: 'Read latest stories', href: '/article' },
-      secondaryCta: { label: 'Explore visuals', href: '/image' },
-      searchPlaceholder: 'Search stories, visuals, listings, and more',
+      badge: 'Opportunity meets credibility',
+      title: ['Find what you need.', 'Show what you do.'],
+      description: 'Explore classified offers, services, rentals, roles, products, and local opportunities.',
+      primaryCta: { label: 'Browse classified', href: '/classified' },
+      secondaryCta: { label: 'Post an offer', href: '/create' },
+      searchPlaceholder: 'Search services, products, roles, or people',
       focusLabel: 'Focus',
       featureCardBadge: 'latest cover rotation',
       featureCardTitle: 'Latest posts shape the visual identity of the homepage.',
@@ -53,20 +53,20 @@ export const pagesContent = {
   },
   about: {
     badge: 'Our Story',
-    title: 'A calmer, clearer way to explore content.',
-    description: `${slot4BrandConfig.siteName} is built to make long-form reading, visual discovery, and supporting resources feel like one unified experience.`,
+      title: 'A clearer way to find opportunities and build trust.',
+    description: `${slot4BrandConfig.siteName} connects practical classified discovery with credible professional profiles.`,
     paragraphs: [
-      'Instead of splitting everything into disconnected pages, the platform keeps related content easy to move through and easy to understand.',
-      'Whether someone starts with an article, listing, image post, or resource page, they can continue exploring without losing context.',
+      'People can browse relevant offers, services, roles, and rentals with the details needed to make informed decisions.',
+      'Profiles give individuals and organizations room to present their experience, identity, and work with clarity.',
     ],
     values: [
       {
-        title: 'Reading-first experience',
-        description: 'We prioritize clarity, pacing, and structure so people can read, browse, and discover without noise.',
+        title: 'Useful classified discovery',
+        description: 'Clear categories and focused details help people find relevant offers without noise.',
       },
       {
-        title: 'Connected content surfaces',
-        description: 'Articles, visual posts, listings, resources, and profiles stay connected so discovery feels natural across the site.',
+        title: 'Credible professional presence',
+        description: 'Profiles help people and organizations share expertise and build confidence before connecting.',
       },
       {
         title: 'Simple and trustworthy',
@@ -76,8 +76,8 @@ export const pagesContent = {
   },
   contact: {
     eyebrow: `Contact ${slot4BrandConfig.siteName}`,
-    title: 'A support page that matches the product, not a generic contact form.',
-    description: 'Tell us what you are trying to publish, fix, or launch. We will route it through the right lane instead of forcing every request into the same support bucket.',
+    title: 'How can we help you make the right connection?',
+    description: 'Contact us about a classified post, profile, account, or general site question.',
     formTitle: 'Send a message',
   },
 
@@ -88,9 +88,9 @@ export const pagesContent = {
     },
     hero: {
       badge: 'Search the archive',
-      title: 'Find stories, listings, visuals, and resources faster.',
-      description: 'Use keywords, categories, and content types to discover posts from every active section of the site.',
-      placeholder: 'Search by keyword, topic, category, or title',
+      title: 'Find offers, services, and professional profiles.',
+      description: 'Search classified opportunities and profiles by keyword, category, or title.',
+      placeholder: 'Search by service, product, role, person, or category',
     },
     resultsTitle: 'Latest searchable content',
   },
@@ -106,8 +106,8 @@ export const pagesContent = {
     },
     hero: {
       badge: 'Publishing workspace',
-      title: 'Create content for every active section.',
-      description: 'Choose the content type, add details, and prepare a clean post with images, links, summary, and body content.',
+      title: 'Create a classified or professional profile.',
+      description: 'Choose a post type and add the useful details, images, links, summary, and description people need.',
     },
     formTitle: 'Content details',
     submitLabel: 'Submit content',

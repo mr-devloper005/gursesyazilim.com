@@ -110,7 +110,7 @@ export function TaskArchiveView({ task, posts, pagination, category, basePath }:
   return (
     <EditableSiteShell>
       <main style={taskThemeStyle(task)} className="min-h-screen bg-[var(--tk-bg)] text-[var(--tk-text)]">
-        <header className="relative overflow-hidden border-b border-[var(--tk-line)]">
+        <header className="relative overflow-hidden border-b border-[var(--tk-line)] bg-[radial-gradient(circle_at_82%_18%,rgba(52,87,255,.14),transparent_30%),linear-gradient(120deg,#f3f5f6,#e9eef4)]">
           <div className="pointer-events-none absolute inset-x-0 -top-40 h-96 bg-[radial-gradient(60%_60%_at_50%_0%,var(--tk-glow),transparent_70%)]" />
           <div className="relative mx-auto max-w-[var(--editable-container)] px-6 py-20 sm:py-28 lg:px-8">
             <div className="flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.34em] text-[var(--tk-accent)]">
@@ -281,21 +281,28 @@ function ListingArchiveCard({ post, href }: { post: SitePost; href: string }) {
 }
 
 function ClassifiedArchiveCard({ post, href }: { post: SitePost; href: string }) {
+  const image = getImages(post)[0]
   const price = getField(post, ['price', 'amount', 'budget'])
   const location = getField(post, ['location', 'address', 'city'])
   const condition = getField(post, ['condition', 'type', 'availability'])
   return (
-    <Link href={href} className={`${cardBase} flex flex-col p-6 sm:p-7`}>
+    <Link href={href} className={`${cardBase} flex flex-col overflow-hidden`}>
+      <div className="relative aspect-[16/10] overflow-hidden bg-[var(--tk-raised)]">
+        {image ? <img src={image} alt="" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" /> : <div className="flex h-full items-center justify-center"><BriefcaseBusiness className="h-12 w-12 text-[var(--tk-accent)] opacity-35" /></div>}
+        <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.16em] text-[var(--tk-accent)] shadow-sm">{getCategory(post, 'Classified')}</span>
+      </div>
+      <div className="flex flex-1 flex-col p-6">
       <div className="flex items-start justify-between gap-4">
         <span className="editable-display text-3xl font-semibold tracking-[-0.03em] text-[var(--tk-accent)]">{price || 'Open offer'}</span>
         {condition ? <span className="rounded-full bg-[var(--tk-accent-soft)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--tk-accent)]">{condition}</span> : null}
       </div>
-      <h2 className="editable-display mt-5 text-xl font-semibold leading-snug tracking-[-0.02em]">{post.title}</h2>
+      <h2 className="editable-display mt-5 text-xl font-bold leading-snug tracking-[-0.03em]">{post.title}</h2>
       <RatingLine post={post} />
       <p className="mt-3 line-clamp-3 flex-1 text-sm leading-7 text-[var(--tk-muted)]">{getSummary(post)}</p>
       <div className="mt-6 flex items-center justify-between border-t border-[var(--tk-line)] pt-4 text-xs font-medium text-[var(--tk-muted)]">
         <span className="inline-flex items-center gap-1.5">{location ? <><MapPin className="h-3.5 w-3.5" /> {location}</> : 'Details inside'}</span>
         <ArrowUpRight className="h-4 w-4 text-[var(--tk-accent)] transition group-hover:translate-x-0.5" />
+      </div>
       </div>
     </Link>
   )
@@ -354,11 +361,12 @@ function ProfileArchiveCard({ post, href }: { post: SitePost; href: string }) {
   const avatar = getImages(post)[0]
   const role = getField(post, ['role', 'designation', 'company', 'location'])
   return (
-    <Link href={href} className={`${cardBase} flex flex-col items-center p-7 text-center`}>
-      <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-[var(--tk-line)] bg-[var(--tk-raised)]">
+    <Link href={href} className={`${cardBase} relative flex flex-col items-center overflow-hidden p-7 text-center`}>
+      <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(120deg,#dfe7ff,#d8edf0)]" />
+      <div className="relative mt-5 flex h-28 w-28 items-center justify-center overflow-hidden rounded-[2rem] border-4 border-white bg-[var(--tk-raised)] shadow-lg">
         {avatar ? <img src={avatar} alt="" className="h-full w-full object-cover" /> : <UserRound className="h-10 w-10 text-[var(--tk-muted)]" />}
       </div>
-      <h2 className="editable-display mt-5 text-lg font-semibold tracking-[-0.02em]">{post.title}</h2>
+      <h2 className="editable-display mt-5 text-xl font-bold tracking-[-0.03em]">{post.title}</h2>
       {role ? <p className="mt-1.5 text-xs font-medium uppercase tracking-[0.16em] text-[var(--tk-accent)]">{role}</p> : null}
       <RatingLine post={post} center />
       <p className="mt-3 line-clamp-2 text-sm leading-6 text-[var(--tk-muted)]">{getSummary(post)}</p>
