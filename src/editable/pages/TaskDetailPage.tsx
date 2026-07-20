@@ -258,13 +258,12 @@ function ClassifiedDetail({ post, related }: { post: SitePost; related: SitePost
   const condition = getField(post, ['condition', 'availability', 'type'])
   const phone = getField(post, ['phone', 'telephone', 'mobile'])
   const email = getField(post, ['email'])
-  const website = getField(post, ['website', 'url'])
   return (
     <>
-      <section className="mx-auto grid max-w-[var(--editable-container)] gap-10 px-6 py-14 sm:py-20 lg:grid-cols-[360px_minmax(0,1fr)] lg:px-8">
+      <section className="mx-auto grid max-w-[var(--editable-container)] gap-10 px-6 py-14 sm:py-20 lg:grid-cols-[400px_minmax(0,1fr)] lg:px-8">
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <BackLink task="classified" />
-          <div className="mt-7 rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-7 shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
+          <div className="mt-7 rounded-[28px] border border-[var(--tk-line)] bg-[radial-gradient(circle_at_100%_0%,#e1e8ff,transparent_35%),white] p-7 shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
             <Kicker task="classified">Classified</Kicker>
             <h1 className="editable-display mt-4 text-2xl font-semibold leading-tight tracking-[-0.02em]">{post.title}</h1>
             <DetailMeta post={post} category={getField(post, ['category'])} />
@@ -279,10 +278,9 @@ function ClassifiedDetail({ post, related }: { post: SitePost; related: SitePost
             </div>
           </div>
         </aside>
-        <article className="min-w-0">
+        <article className="min-w-0 rounded-[28px] border border-[var(--tk-line)] bg-white p-5 shadow-[0_22px_60px_rgba(15,23,42,0.06)] sm:p-8">
           <ImageStrip images={images} label="Offer images" large />
           <BodyContent post={post} />
-          <ContactAction website={website} phone={phone} email={email} />
         </article>
       </section>
       <RelatedStrip task="classified" related={related} />
@@ -393,10 +391,10 @@ function ProfileDetail({ post, related }: { post: SitePost; related: SitePost[] 
     <>
       <section className="mx-auto max-w-[var(--editable-container)] px-6 py-14 sm:py-20 lg:px-8">
         <BackLink task="profile" />
-        <div className="mt-8 grid gap-10 lg:grid-cols-[360px_minmax(0,1fr)]">
+        <div className="mt-8 grid gap-10 lg:grid-cols-[400px_minmax(0,1fr)]">
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-[var(--tk-radius)] border border-[var(--tk-line)] bg-[var(--tk-surface)] p-8 text-center shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
-              <div className="mx-auto flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border border-[var(--tk-line)] bg-[var(--tk-raised)]">
+            <div className="relative overflow-hidden rounded-[28px] border border-[var(--tk-line)] bg-white p-8 pt-14 text-center shadow-[0_22px_60px_rgba(15,23,42,0.08)] before:absolute before:inset-x-0 before:top-0 before:h-28 before:bg-[linear-gradient(120deg,#dfe7ff,#d8edf0)]">
+              <div className="relative mx-auto flex h-36 w-36 items-center justify-center overflow-hidden rounded-[2.5rem] border-4 border-white bg-[var(--tk-raised)] shadow-xl">
                 {images[0] ? <img src={images[0]} alt="" className="h-full w-full object-cover" /> : <UserRound className="h-14 w-14 text-[var(--tk-muted)]" />}
               </div>
               <h1 className="editable-display mt-6 text-2xl font-semibold tracking-[-0.02em]">{post.title}</h1>
@@ -405,7 +403,7 @@ function ProfileDetail({ post, related }: { post: SitePost; related: SitePost[] 
               <ContactAction website={website} email={email} bare />
             </div>
           </aside>
-          <article className="min-w-0">
+          <article className="min-w-0 rounded-[28px] border border-[var(--tk-line)] bg-white p-6 shadow-[0_22px_60px_rgba(15,23,42,0.06)] sm:p-9">
             <Kicker task="profile">Profile</Kicker>
             <BodyContent post={post} />
             <ImageStrip images={images.slice(1)} label="Gallery" />
@@ -494,7 +492,7 @@ function BadgeLine({ label, value }: { label: string; value: string }) {
   )
 }
 
-function RelatedPanel({ task, post, related }: { task: TaskKey; post: SitePost; related: SitePost[] }) {
+function RelatedPanel({ task, post: _post, related }: { task: TaskKey; post: SitePost; related: SitePost[] }) {
   const taskConfig = getTaskConfig(task)
   return (
     <div className="space-y-6">
@@ -567,4 +565,3 @@ function RelatedCard({ task, post, grid = false }: { task: TaskKey; post: SitePo
     </Link>
   )
 }
-
